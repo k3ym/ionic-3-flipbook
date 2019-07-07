@@ -11,8 +11,8 @@ Ionic sample using "The page flip effect for HTML5" http://www.turnjs.com
 ## **Clone working verion**
 ```bash
 git clone https://github.com/k3ym/ionic-3-flipbook.git
-npm install
 cd ionic-3-flipbook
+npm install
 ionic serve
 ```
 
