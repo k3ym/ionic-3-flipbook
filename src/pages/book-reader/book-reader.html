@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ book.title }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div id="flipbook">
+    <ng-container *ngFor="let page of book.pages; let i = index">
+      <img class="page" src="{{ page }}" />
+    </ng-container>
+  </div>
+</ion-content>

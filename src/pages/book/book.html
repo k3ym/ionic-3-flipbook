@@ -1,18 +1,129 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Book Title
-    </ion-title>
+    <ion-title>新規追加</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div id="flipbook">
-    <div class="cover"> Cover </div>
-    <div class="page"> Page 1 </div>
-    <div class="page"> Page 2 </div>
-    <div class="page"> Page 3 </div>
-    <div class="page"> Page 4 </div>
-    <div class="cover"> Cover </div>
-  </div>
+<ion-content padding>
+  <ion-stepper #stepper>
+    <ion-step label="ブック情報を入力してください">
+      <ion-card>
+        <ion-item>
+          <ion-label stacked>
+            タイトル
+          </ion-label>
+          <ion-input [(ngModel)]="book.title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>
+            著者名
+          </ion-label>
+          <ion-input [(ngModel)]="book.author"></ion-input>
+        </ion-item>
+      </ion-card>
+      <button ion-button small ionicStepperNext>次へ</button>
+    </ion-step>
+    <ion-step label="表紙の画像を選択してください">
+      <input
+        type="file"
+        name="file"
+        (change)="onCoverSelected($event)"
+        accept="image/*"
+      />
+      <img *ngIf="book.coverImg" [src]="book.coverImg" />
+      <button ion-button small ionicStepperNext>次へ</button>
+      <button ion-button color="light" small ionicStepperPrevious>
+        戻る
+      </button>
+    </ion-step>
+    <!-- <ion-step label="目次を作成してください">
+      <button ion-button small ionicStepperNext>次へ</button>
+      <button ion-button color="light" small ionicStepperPrevious>
+        戻る
+      </button>
+    </ion-step> -->
+    <ion-step label="ブックの内容を作成してください">
+      <input
+        type="file"
+        name="file"
+        (change)="onPageSelected($event)"
+        accept="image/*"
+      />
+      <button ion-button (click)="addPage()">ページを追加</button>
+      <ion-slides>
+        <ion-slide *ngFor="let page of book.pages; let i = index">
+          <img [src]="book.pages[i]" />
+          <button
+            ion-button
+            round
+            outline
+            color="danger"
+            small
+            (click)="deletePage(i)"
+          >
+            <ion-icon name="close">
+              削除
+            </ion-icon>
+          </button>
+        </ion-slide>
+      </ion-slides>
+      <button ion-button small ionicStepperNext>次へ</button>
+      <button ion-button color="light" small ionicStepperPrevious>
+        戻る
+      </button>
+    </ion-step>
+    <ion-step label="裏表紙を作成してください">
+      <input
+        type="file"
+        name="file"
+        (change)="onBackCoverSelected($event)"
+        accept="image/*"
+      />
+      <img *ngIf="book.backCoverImg" [src]="book.backCoverImg" />
+      <button ion-button small ionicStepperNext>次へ</button>
+      <button ion-button color="light" small ionicStepperPrevious>
+        戻る
+      </button>
+    </ion-step>
+    <ion-step label="内容を確認してください">
+      <ion-item>
+        <ion-label stacked>
+          タイトル
+        </ion-label>
+        <ion-input value="{{ book.title }}" disabled> </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>
+          著者名
+        </ion-label>
+        <ion-input value="{{ book.author }}" disabled> </ion-input>
+      </ion-item>
+      <ion-item class="image-label">
+        <ion-label stacked>
+          表紙
+        </ion-label>
+      </ion-item>
+      <img [src]="book.coverImg" />
+      <ion-item class="image-label">
+        <ion-label stacked>
+          内容
+        </ion-label>
+      </ion-item>
+      <ion-slides>
+        <ion-slide *ngFor="let page of book.pages; let i = index">
+          <img [src]="book.pages[i]" />
+        </ion-slide>
+      </ion-slides>
+      <ion-item class="image-label">
+        <ion-label stacked>
+          裏表紙
+        </ion-label>
+      </ion-item>
+      <img [src]="book.backCoverImg" />
+      <button ion-button small (click)="createBook()">ブックを作成する</button>
+      <button ion-button color="light" small ionicStepperPrevious>
+        戻る
+      </button>
+    </ion-step>
+  </ion-stepper>
 </ion-content>

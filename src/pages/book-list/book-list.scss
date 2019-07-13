@@ -1,0 +1,25 @@
+page-book-list {
+  .container {
+    box-shadow: none;
+  }
+  .container-title {
+    font-size: 18px;
+  }
+  .book {
+    max-width: 230px;
+  }
+  .book-mobile {
+    width: 100%;
+  }
+  .book-info {
+    font-size: 12px;
+  }
+  .book-cover-img {
+    height: 258.81px;
+    width: 200px;
+  }
+  .book-cover-img-mobile {
+    height: 350px;
+    width: 280px;
+  }
+}

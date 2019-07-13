@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Rightsブック</ion-title>
+    <ion-buttons end>
+      <button ion-button outline (click)="goToBookPage()">
+        <ion-icon name="add"> 新規追加</ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card class="container">
+    <ion-card-title class="container-title">
+      ブック一覧
+    </ion-card-title>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col
+            [ngClass]="{ book: isDesktop, 'book-mobile': !isDesktop }"
+            *ngFor="let book of books"
+          >
+            <ion-card (click)="goToReader(book)">
+              <ion-img
+                [ngClass]="{
+                  'book-cover-img': isDesktop,
+                  'book-cover-img-mobile': !isDesktop
+                }"
+                src="{{ book.coverImg }}"
+              ></ion-img>
+              <ion-list>
+                <ion-item class="book-info">
+                  <ion-label>タイトル</ion-label>
+                  <ion-input value="{{ book.title }}" disabled> </ion-input>
+                </ion-item>
+                <ion-item class="book-info">
+                  <ion-label>著者名</ion-label>
+                  <ion-input value="{{ book.author }}" disabled> </ion-input>
+                </ion-item>
+                <ion-item class="book-info">
+                  <ion-label>出版日</ion-label>
+                  <ion-input value="{{ book.publishDate }}" disabled>
+                  </ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
