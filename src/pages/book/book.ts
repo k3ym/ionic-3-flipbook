@@ -39,7 +39,6 @@ export class BookPage {
       }
       reader.readAsDataURL($event.target.files[0]);
     }
-    console.log(this.book.coverImg)
   }
 
   onPageSelected($event) {
@@ -58,7 +57,6 @@ export class BookPage {
   }
 
   deletePage(i): void {
-    console.log(this.book.pages[i])
     this.book.pages.splice(i, 1);
   }
 
