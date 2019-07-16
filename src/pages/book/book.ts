@@ -12,7 +12,7 @@ import {
 })
 export class BookPage {
   book = {
-    id: "",
+    id: 0,
     title: "",
     author: "",
     publishDate: "",
