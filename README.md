@@ -2,6 +2,12 @@
 Ionic sample using "The page flip effect for HTML5" http://www.turnjs.com
 > This is a implementation of Ionic 3 importing jQuery and TurnJS
 
+# Environment
+
+- npm 6.9.0
+- node v11.10.0
+- ionic 3.20.1
+
 # Requirements
 - Ionic Framework https://ionicframework.com/
 - jQuery >= 1.3 http://jquery.com/download/
