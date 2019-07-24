@@ -5,12 +5,17 @@ page-book {
     border: solid 1px black;
   }
   .page {
-    overflow:hidden;
-    background-color: white;
+    overflow: hidden;
+    background-color: lightgrey;
     border: solid 1px black;
     font-weight: bold;
     text-align: center;
     font-size: 20px;
     line-height: 100px;
+  }
+  .previous-button {
+    position: absolute!important;
+  }
+  .next-button {
   }
 }

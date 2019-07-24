@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { Platform } from "ionic-angular";
+import { ScrollHideConfig } from '../../directives/scroll-hide.directive';
 
 // for jquery
 declare var $: any;
@@ -11,6 +12,11 @@ declare var $: any;
 })
 export class BookReaderPage {
   book: any;
+  zoomRatio = 100;
+  pageNum = 1;
+  pageMax: number;
+
+  footerScrollConfig: ScrollHideConfig = { cssProperty: 'margin-bottom', maxValue: undefined };  
 
   constructor(
     public navCtrl: NavController,
@@ -18,6 +24,7 @@ export class BookReaderPage {
     public platform: Platform
   ) {
     this.book = this.navParams.get("book");
+    this.pageMax = this.book.pages.length;
   }
 
   ionViewDidLoad() {
@@ -25,8 +32,29 @@ export class BookReaderPage {
       width: "100%",
       height: this.platform.height() - 50,
       display: this.platform.is("mobile") ? "single" : "double",
-      autoCenter: true
+      duration: 0,
+      autoCenter: true,
+      gradients: false,
+      elevation: 0,
+      turnCorners: "bl,tr"
     });
   }
 
+  nextPage() {
+    $("#flipbook").turn("next");
+    this.pageNum = $("#flipbook").turn("page");
+  }
+
+  previousPage() {
+    $("#flipbook").turn("previous");
+    this.pageNum = $("#flipbook").turn("page");
+  }
+
+  zoom(percentage) {
+    $("#flipbook").turn("zoom", percentage/100);
+  }
+
+  goTo(pageNum) {
+    $("#flipbook").turn("page", pageNum);
+  }
 }

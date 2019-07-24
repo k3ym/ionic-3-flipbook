@@ -13,13 +13,16 @@ import { BookListPage } from '../pages/book-list/book-list';
 import { BookReaderPage } from '../pages/book-reader/book-reader';
 import { HomePage } from '../pages/home/home';
 
+import { ScrollHideDirective } from '../directives/scroll-hide.directive';
+
 @NgModule({
   declarations: [
     MyApp,
     BookPage,
     BookListPage,
     BookReaderPage,
-    HomePage
+    HomePage,
+    ScrollHideDirective
   ],
   imports: [
     BrowserModule,
